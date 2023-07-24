@@ -411,7 +411,6 @@ class Benchmark():
     def __is_enabled(self, service):
         return run_command(cmd_split(f'systemctl is-enabled {service}'))[0]
 
-
     def __check_file_permissions(self, file):
         if os.path.exists(file):
             stat = run_command(cmd_split(f"stat {file}"), [cmd_split("grep -i Access")])[0]
@@ -419,22 +418,6 @@ class Benchmark():
             stat = "File doesn't exist"
         return stat
 
-
-        if os.path.exists(file):
-            stat_output, _ = run_command(cmd_split(f"stat {file}"), [cmd_split("grep -i Access")])
-            lines = stat_output.splitlines()
-            access_line = lines[0] if lines else ""
-
-            # Verify Uid and Gid
-            if expected_uid_gid in access_line:
-                # Verify permissions
-                if file in expected_permissions and access_line.endswith(expected_permissions[file]):
-                    return "Passed"
-
-            return "Failed"
-        else:
-            return "File doesn't exist"
-                
     def __execute_bash_script(self, cmd):
         if os.path.isfile('script.sh'):
             os.remove('script.sh')
