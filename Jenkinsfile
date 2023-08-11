@@ -51,7 +51,7 @@ pipeline {
     stage('Deploying cookbook on Node'){
             steps{
                 script {
-                    sshPublisher(publishers: [sshPublisherDesc(configName: 'devopscitool@172.16.1.168', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'cd chef-repo/cookbooks; knife cookbook upload petclinic', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)]) 
+                    sshPublisher(publishers: [sshPublisherDesc(configName: ', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'cd chef-repo/cookbooks; knife cookbook upload petclinic', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)]) 
                 }
             }
     }        
